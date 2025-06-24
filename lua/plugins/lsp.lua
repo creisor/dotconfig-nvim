@@ -7,6 +7,8 @@ return {
     -- Get enhanced capabilities from nvim-cmp
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+    require("lang").setup()
+
     lspconfig.terraformls.setup({
       filetypes = { "terraform", "tf" },
       cmd = { "terraform-ls", "serve" },
