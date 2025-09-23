@@ -10,11 +10,11 @@ function M.setup()
     end,
   })
 
-  local lspconfig = require("lspconfig")
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
-  lspconfig.bashls.setup({
+  vim.lsp.config('bashls', {
     capabilities = capabilities,
   })
+  vim.lsp.enable('bashls')
 end
 
 return M

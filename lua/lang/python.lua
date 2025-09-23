@@ -12,9 +12,11 @@ function M.setup()
   })
 
   -- LSP
-  local lspconfig = require("lspconfig")
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
-  lspconfig.pyright.setup({ capabilities = capabilities })
+  vim.lsp.config('pyright', {
+    capabilities = capabilities
+  })
+  vim.lsp.enable('pyright')
 
   -- Formatter (e.g., black via conform/null-ls)
   -- conform handled separately if you use it globally
