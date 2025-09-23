@@ -17,6 +17,19 @@ return {
 
     local wk = require("which-key")
 
+    -- wk.register({
+    --   ["<leader>b"] = {
+    --     name = "+buffers",
+    --     e = { "<cmd>Telescope buffers<CR>", "buffer list" },
+    --   },
+    -- })
+    --
+    -- vim.keymap.set("n", "<leader>be", "<cmd>Telescope buffers<CR>", { desc = "buffer list" })
+    --
+    -- wk.register({
+    --   ["<leader>b"] = { name = "+buffers" },
+    -- })
+
     wk.add({
       { "<leader>f", group = "file" }, -- group
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File", mode = "n" },

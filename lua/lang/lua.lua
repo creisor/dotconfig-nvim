@@ -10,7 +10,7 @@ function M.setup()
     end,
   })
 
-  local lspconfig = require("lspconfig")
+  local lspconfig = require("vim.lsp.config")
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
   lspconfig.lua_ls.setup({
     capabilities = capabilities,

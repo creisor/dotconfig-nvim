@@ -5,8 +5,11 @@ return
     require("neotone").setup({
     mode = "system",
     themes = {
-        dark = "ayu",
-        light = "tempus_totus",
+      dark = "catppuccin-mocha",
+      light = "catppuccin-latte",
+        --dark = "ayu",
+        -- light = "tempus_totus",
+        --light = "zellner"
     },
 })
   end

@@ -9,7 +9,7 @@ return {
     g.ale_linters = {
       ruby = {'rubocop', 'ruby'},
       lua = {'lua_language_server'},
-      python = {'python'},
+      python = {'python', 'pyright'},
       go = {'go', 'govet', 'errcheck'},
   }
   end
