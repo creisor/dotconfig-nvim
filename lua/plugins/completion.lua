@@ -46,7 +46,7 @@ return {
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp" },
+          { name = "lsp" },  -- Updated for Neovim 0.11+ LSP API
           { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },

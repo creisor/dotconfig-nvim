@@ -11,10 +11,10 @@ function M.setup()
   })
 
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
-  vim.lsp.config('solargraph', {
+  vim.lsp.config("solargraph", {
     capabilities = capabilities,
   })
-  vim.lsp.enable('solargraph')
+  vim.lsp.enable("solargraph")
 end
 
 return M

@@ -17,11 +17,15 @@ function M.setup()
 
   vim.lsp.config("jdtls", {
     capabilities = capabilities,
-    root_dir = require("lspconfig/util").root_pattern(".git", "mvnw", "gradlew", "pom.xml", "build.gradle"),
+    root_dir = function(fname)
+      local util = require("lspconfig.util")
+      return util.root_pattern(".git", "mvnw", "gradlew", "pom.xml", "build.gradle")(fname)
+        or util.find_git_ancestor(fname)
+        or vim.fn.getcwd()
+    end,
     -- settings = { java = { format = { enabled = true } } }, -- if you need jdtls settings
     -- on_attach = function(client, bufnr) ... end,
   })
-
   vim.lsp.enable("jdtls")
 end
 

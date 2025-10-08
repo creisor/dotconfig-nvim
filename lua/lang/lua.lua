@@ -12,7 +12,7 @@ function M.setup()
 
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-  vim.lsp.config('lua_ls', {
+  vim.lsp.config("lua_ls", {
     capabilities = capabilities,
     settings = {
       Lua = {
@@ -36,7 +36,7 @@ function M.setup()
       },
     },
   })
-  vim.lsp.enable('lua_ls')
+  vim.lsp.enable("lua_ls")
 end
 
 return M

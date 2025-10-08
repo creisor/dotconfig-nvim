@@ -7,6 +7,8 @@ function M.setup()
   require("lang.lua").setup()
   require("lang.python").setup()
   require("lang.ruby").setup()
+  require("lang.terraform").setup()
+  require("lang.yaml").setup()
 end
 
 return M

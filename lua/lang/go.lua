@@ -11,10 +11,10 @@ function M.setup()
   })
 
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
-  vim.lsp.config('gopls', {
+  vim.lsp.config("gopls", {
     capabilities = capabilities,
   })
-  vim.lsp.enable('gopls')
+  vim.lsp.enable("gopls")
 end
 
 return M
