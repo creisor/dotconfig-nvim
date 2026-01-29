@@ -2,8 +2,8 @@ return {
   "hashivim/vim-terraform",
   ft = { "terraform", "terraform-vars", "hcl", "tfvars" },
   config = function()
-    -- Disable auto-formatting since LSP handles this
-    vim.g.terraform_fmt_on_save = 0
+    -- Enable auto-formatting on save
+    vim.g.terraform_fmt_on_save = 1
     vim.g.terraform_align = 1
     -- Disable other auto-features that might conflict with LSP
     vim.g.terraform_remap_spacebar = 0
