@@ -12,6 +12,7 @@ return {
         "gopls",           -- Go
         "jdtls",           -- Java
         "solargraph",      -- Ruby
+        "ts_ls",           -- TypeScript / JavaScript
       },
       -- Disable automatic LSP setup since we use built-in LSP
       automatic_installation = false,

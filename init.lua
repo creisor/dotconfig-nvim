@@ -1,3 +1,6 @@
+-- Ensure Mason-installed binaries are on PATH
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
+
 vim.keymap.set('n', '<leader>nt', ':Neotree toggle<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>rf', ':ReloadNeoTone<CR>', { noremap = true })
 vim.wo.number = true

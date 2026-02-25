@@ -13,6 +13,10 @@ return {
       python = {'ruff'},            -- Use ruff instead of flake8/pyright
       go = {'go', 'govet', 'errcheck'},
       terraform = {'terraform_validate', 'tflint'},
+      javascript = {'eslint'},
+      javascriptreact = {'eslint'},
+      typescript = {'eslint'},
+      typescriptreact = {'eslint'},
     }
     
     -- Configure ruff to respect project configuration files
