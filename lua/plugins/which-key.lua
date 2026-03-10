@@ -17,43 +17,47 @@ return {
 
     local wk = require("which-key")
 
-    -- wk.register({
-    --   ["<leader>b"] = {
-    --     name = "+buffers",
-    --     e = { "<cmd>Telescope buffers<CR>", "buffer list" },
-    --   },
-    -- })
-    --
-    -- vim.keymap.set("n", "<leader>be", "<cmd>Telescope buffers<CR>", { desc = "buffer list" })
-    --
-    -- wk.register({
-    --   ["<leader>b"] = { name = "+buffers" },
-    -- })
-
     wk.add({
-      { "<leader>f", group = "file" }, -- group
-      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File", mode = "n" },
-      { "<leader>fs", ":w<CR>", desc = "Save File" },
+      { "<leader>a", group = "neotone" },
+      { "<leader>ar", "<cmd>ReloadNeoTone<CR>", desc = "Reload neotone (after switching dark/light mode, e.g.)" },
+
+      { "<leader>b", group = "buffers" },
+      { "<leader>be", "<cmd>Telescope buffers<CR>", desc = "Buffer List" },
+      { "<leader>bd", "<cmd>bdelete<CR>", desc = "Delete Buffer" },
+      { "<leader>bn", "<cmd>bnext<CR>", desc = "Next Buffer" },
+      { "<leader>bp", "<cmd>bprevious<CR>", desc = "Previous Buffer" },
+
+
+      { "<leader>f", group = "file" },
+      { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find File" },
+      { "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
+      { "<leader>fs", "<cmd>w<CR>", desc = "Save File" },
+
       { "<leader>n", group = "neotree" },
-      { "<leader>nt", ":Neotree toggle<CR>", desc = "Toggle Neo-tree" },
+      { "<leader>nt", "<cmd>Neotree toggle<CR>", desc = "Toggle Neo-tree" },
+
       { "<leader>t", group = "terraform" },
-      { "<leader>tf", ":!terraform fmt %<CR>", desc = "Format Current File" },
-      { "c", group = "ChatGPT" },
-      { "cc", "<cmd>ChatGPT<CR>", desc = "ChatGPT" },
+      { "<leader>tf", "<cmd>!terraform fmt %<CR>", desc = "Format Current File" },
+      { "<leader>tfa", "<cmd>!terraform fmt .<CR>", desc = "Format All Files" },
+
+      { "<leader>d", vim.diagnostic.open_float, desc = "Show Diagnostic" },
+
+      { "<leader>c", group = "ChatGPT" },
+      { "<leader>cc", "<cmd>ChatGPT<CR>", desc = "ChatGPT" },
       {
         mode = { "n", "v" },
-        { "ca", "<cmd>ChatGPTRun add_tests<CR>", desc = "Add Tests" },
-        { "cd", "<cmd>ChatGPTRun docstring<CR>", desc = "Docstring" },
-        { "ce", "<cmd>ChatGPTEditWithInstruction<CR>", desc = "Edit with instruction" },
-        { "cf", "<cmd>ChatGPTRun fix_bugs<CR>", desc = "Fix Bugs" },
-        { "cg", "<cmd>ChatGPTRun grammar_correction<CR>", desc = "Grammar Correction" },
-        { "ck", "<cmd>ChatGPTRun keywords<CR>", desc = "Keywords" },
-        { "cl", "<cmd>ChatGPTRun code_readability_analysis<CR>", desc = "Code Readability Analysis" },
-        { "co", "<cmd>ChatGPTRun optimize_code<CR>", desc = "Optimize Code" },
-        { "cr", "<cmd>ChatGPTRun roxygen_edit<CR>", desc = "Roxygen Edit" },
-        { "cs", "<cmd>ChatGPTRun summarize<CR>", desc = "Summarize" },
-        { "ct", "<cmd>ChatGPTRun translate<CR>", desc = "Translate" },
-        { "cx", "<cmd>ChatGPTRun explain_code<CR>", desc = "Explain Code" },
+        { "<leader>ca", "<cmd>ChatGPTRun add_tests<CR>", desc = "Add Tests" },
+        { "<leader>cd", "<cmd>ChatGPTRun docstring<CR>", desc = "Docstring" },
+        { "<leader>ce", "<cmd>ChatGPTEditWithInstruction<CR>", desc = "Edit with instruction" },
+        { "<leader>cf", "<cmd>ChatGPTRun fix_bugs<CR>", desc = "Fix Bugs" },
+        { "<leader>cg", "<cmd>ChatGPTRun grammar_correction<CR>", desc = "Grammar Correction" },
+        { "<leader>ck", "<cmd>ChatGPTRun keywords<CR>", desc = "Keywords" },
+        { "<leader>cl", "<cmd>ChatGPTRun code_readability_analysis<CR>", desc = "Code Readability Analysis" },
+        { "<leader>co", "<cmd>ChatGPTRun optimize_code<CR>", desc = "Optimize Code" },
+        { "<leader>cr", "<cmd>ChatGPTRun roxygen_edit<CR>", desc = "Roxygen Edit" },
+        { "<leader>cs", "<cmd>ChatGPTRun summarize<CR>", desc = "Summarize" },
+        { "<leader>ct", "<cmd>ChatGPTRun translate<CR>", desc = "Translate" },
+        { "<leader>cx", "<cmd>ChatGPTRun explain_code<CR>", desc = "Explain Code" },
       },
     })
   end,
