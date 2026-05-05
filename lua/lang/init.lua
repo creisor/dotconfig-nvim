@@ -10,6 +10,7 @@ function M.setup()
   require("lang.terraform").setup()
   require("lang.typescript").setup()
   require("lang.yaml").setup()
+  require("lang.json").setup()
 end
 
 return M
