@@ -4,6 +4,9 @@ vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
 vim.keymap.set('n', '<leader>rf', ':ReloadNeoTone<CR>', { noremap = true })
 vim.wo.number = true
 
+-- Shared LSP keymaps (applies to all servers via LspAttach)
+require("config.lsp").setup()
+
 -- Setup language configurations after lazy.nvim loads
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazyDone",
