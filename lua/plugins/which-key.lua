@@ -27,6 +27,9 @@ return {
       { "<leader>bn", "<cmd>bnext<CR>", desc = "Next Buffer" },
       { "<leader>bp", "<cmd>bprevious<CR>", desc = "Previous Buffer" },
 
+      { "<leader>c", group = "code refs n defs" },
+      { "<leader>cr", "<cmd>Telescope lsp_references<CR>", desc = "LSP references" },
+      { "<leader>cd", "<cmd>Telescope lsp_definitions<CR>", desc = "LSP definitions" },
 
       { "<leader>f", group = "file" },
       { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find File" },
@@ -41,24 +44,7 @@ return {
       { "<leader>tfa", "<cmd>!terraform fmt .<CR>", desc = "Format All Files" },
 
       { "<leader>d", vim.diagnostic.open_float, desc = "Show Diagnostic" },
-
-      { "<leader>c", group = "ChatGPT" },
-      { "<leader>cc", "<cmd>ChatGPT<CR>", desc = "ChatGPT" },
-      {
-        mode = { "n", "v" },
-        { "<leader>ca", "<cmd>ChatGPTRun add_tests<CR>", desc = "Add Tests" },
-        { "<leader>cd", "<cmd>ChatGPTRun docstring<CR>", desc = "Docstring" },
-        { "<leader>ce", "<cmd>ChatGPTEditWithInstruction<CR>", desc = "Edit with instruction" },
-        { "<leader>cf", "<cmd>ChatGPTRun fix_bugs<CR>", desc = "Fix Bugs" },
-        { "<leader>cg", "<cmd>ChatGPTRun grammar_correction<CR>", desc = "Grammar Correction" },
-        { "<leader>ck", "<cmd>ChatGPTRun keywords<CR>", desc = "Keywords" },
-        { "<leader>cl", "<cmd>ChatGPTRun code_readability_analysis<CR>", desc = "Code Readability Analysis" },
-        { "<leader>co", "<cmd>ChatGPTRun optimize_code<CR>", desc = "Optimize Code" },
-        { "<leader>cr", "<cmd>ChatGPTRun roxygen_edit<CR>", desc = "Roxygen Edit" },
-        { "<leader>cs", "<cmd>ChatGPTRun summarize<CR>", desc = "Summarize" },
-        { "<leader>ct", "<cmd>ChatGPTRun translate<CR>", desc = "Translate" },
-        { "<leader>cx", "<cmd>ChatGPTRun explain_code<CR>", desc = "Explain Code" },
-      },
+      
     })
   end,
 }
