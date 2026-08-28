@@ -7,6 +7,9 @@ vim.wo.number = true
 -- Shared LSP keymaps (applies to all servers via LspAttach)
 require("config.lsp").setup()
 
+-- Periodic Session.vim checkpointing (integrates with tmux-resurrect)
+require("config.session").setup()
+
 -- Setup language configurations after lazy.nvim loads
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazyDone",

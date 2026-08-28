@@ -36,8 +36,19 @@ return {
       { "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
       { "<leader>fs", "<cmd>w<CR>", desc = "Save File" },
 
+      { "<leader>g", group = "git" },
+      { "<leader>gb", "<cmd>BlameToggle<CR>", desc = "Toggle git blame" },
+      { "<leader>gd", "<cmd>DiffviewOpen<CR>", desc = "Diffview: Open" },
+      { "<leader>gc", "<cmd>DiffviewClose<CR>", desc = "Diffview: Close" },
+      { "<leader>gh", "<cmd>DiffviewFileHistory<CR>", desc = "Diffview: Repo History" },
+      { "<leader>gf", "<cmd>DiffviewFileHistory %<CR>", desc = "Diffview: Current File History" },
+
       { "<leader>n", group = "neotree" },
       { "<leader>nt", "<cmd>Neotree toggle<CR>", desc = "Toggle Neo-tree" },
+
+      { "<leader>s", group = "session" },
+      { "<leader>ss", function() require("config.session").save() end, desc = "Save session" },
+      { "<leader>sr", function() require("config.session").restore() end, desc = "Restore session" },
 
       { "<leader>t", group = "terraform" },
       { "<leader>tf", "<cmd>!terraform fmt %<CR>", desc = "Format Current File" },
