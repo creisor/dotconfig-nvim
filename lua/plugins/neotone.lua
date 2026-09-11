@@ -6,8 +6,8 @@ return
     mode = "system",
     themes = {
       dark = "kanagawa-wave",
-      light = "tokyonight-day",
-        --light = "tempus_totus",
+      light = "tempus_totus",
+        --light = "tokyonight-day",
         --light = "catppuccin-latte",
         --dark = "catppuccin-mocha",
         --dark = "ayu",

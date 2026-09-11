@@ -24,7 +24,16 @@ function M.save()
   if not has_real_buffer() then
     return
   end
-  vim.cmd("mksession! " .. vim.fn.fnameescape(SESSION_FILE))
+  -- mksession writes relative to the cwd; skip quietly when it isn't writable
+  -- (e.g. nvim started in a read-only or otherwise non-writable directory)
+  -- so the periodic timer doesn't throw E190 every interval.
+  if vim.fn.filewritable(vim.fn.getcwd()) ~= 2 then
+    return
+  end
+  local ok, err = pcall(vim.cmd, "mksession! " .. vim.fn.fnameescape(SESSION_FILE))
+  if not ok then
+    vim.notify("Session save failed: " .. err, vim.log.levels.WARN)
+  end
 end
 
 function M.restore()
