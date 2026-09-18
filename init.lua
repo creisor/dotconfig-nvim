@@ -19,3 +19,7 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 require("config.lazy")
+
+-- Follow the terminal background (OSC 11) for light/dark theme selection.
+-- Runs after lazy so the colorscheme plugins are loaded.
+require("config.theme").setup()
