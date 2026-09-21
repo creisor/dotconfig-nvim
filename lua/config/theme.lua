@@ -19,8 +19,30 @@ local themes = {
 
 local function apply()
   local scheme = themes[vim.o.background] or themes.dark
-  -- pcall so a not-yet-loaded colorscheme never aborts startup.
-  pcall(vim.cmd.colorscheme, scheme)
+  -- Deferred so ours is the LAST colorscheme applied: changing &background makes
+  -- Neovim re-source the current colorscheme, and kanagawa's colors_name is the
+  -- ambiguous "kanagawa" (which re-selects lotus on a light background). Applying
+  -- our explicit choice on the next tick overrides that. pcall so a not-yet-loaded
+  -- colorscheme never aborts startup.
+  vim.schedule(function()
+    pcall(vim.cmd.colorscheme, scheme)
+  end)
+end
+
+-- The native tabline (TabLineFill/TabLine/TabLineSel) renders as a distractingly
+-- dark bar in both kanagawa and tempus. Blend it into the editor background so it
+-- isn't darker than the window: inactive tabs muted (Comment fg), the active tab
+-- lifted with the CursorLine background + bold. Derived from the live palette, so
+-- it tracks whichever theme is active.
+local function style_tabline()
+  local function hl(name)
+    return vim.api.nvim_get_hl(0, { name = name, link = false })
+  end
+  local normal, cursorline, comment = hl("Normal"), hl("CursorLine"), hl("Comment")
+  local bg = normal.bg
+  vim.api.nvim_set_hl(0, "TabLineFill", { bg = bg })
+  vim.api.nvim_set_hl(0, "TabLine", { fg = comment.fg, bg = bg })
+  vim.api.nvim_set_hl(0, "TabLineSel", { fg = normal.fg, bg = cursorline.bg or bg, bold = true })
 end
 
 -- Ask the terminal for its background color. Neovim consumes the OSC 11 reply
@@ -33,7 +55,12 @@ local function requery()
 end
 
 function M.setup()
+  -- Re-apply the tabline overrides on every colorscheme load (a colorscheme
+  -- resets all highlights), including the initial apply() below.
+  vim.api.nvim_create_autocmd("ColorScheme", { callback = style_tabline })
+
   apply()
+  style_tabline()
 
   -- Re-apply whenever the detected background changes: async startup detection,
   -- or Ghostty re-reporting after you toggle macOS light/dark.
