@@ -51,6 +51,17 @@ local function style_indent()
   vim.api.nvim_set_hl(0, "IblScope", { fg = blend(bg, target, 0.28), nocombine = true })
 end
 
+-- Neo-tree paints its own window background: modus sets NeoTreeNormal/NormalNC to
+-- the bg_active/bg_inactive grays, so the sidebar reads gray rather than the
+-- editor background. Link those back to Normal (and the end-of-buffer tildes to
+-- the editor's EndOfBuffer) so the tree matches the theme background. Theme-
+-- agnostic on purpose — it tracks whatever colorscheme is live.
+local function style_neotree()
+  vim.api.nvim_set_hl(0, "NeoTreeNormal", { link = "Normal" })
+  vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { link = "Normal" })
+  vim.api.nvim_set_hl(0, "NeoTreeEndOfBuffer", { link = "EndOfBuffer" })
+end
+
 -- Ask the terminal for its background color. Neovim consumes the OSC 11 reply
 -- and updates &background, which fires the OptionSet autocmd below.
 local function requery()
@@ -61,12 +72,14 @@ local function requery()
 end
 
 function M.setup()
-  -- Re-apply the indent-guide overrides on every colorscheme load (a colorscheme
-  -- resets all highlights), including the initial apply() below.
+  -- Re-apply the custom highlight overrides on every colorscheme load (a
+  -- colorscheme resets all highlights), including the initial apply() below.
   vim.api.nvim_create_autocmd("ColorScheme", { callback = style_indent })
+  vim.api.nvim_create_autocmd("ColorScheme", { callback = style_neotree })
 
   apply()
   style_indent()
+  style_neotree()
 
   -- Re-apply whenever the detected background changes: async startup detection,
   -- or Ghostty re-reporting after you toggle macOS light/dark.
