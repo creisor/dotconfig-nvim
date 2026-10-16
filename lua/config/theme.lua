@@ -88,6 +88,19 @@ function M.setup()
     callback = apply,
   })
 
+  -- Re-query the terminal background whenever nvim regains focus, so returning to
+  -- the editor after toggling the Mac's appearance re-detects light/dark without a
+  -- manual command. Requires tmux `focus-events on` to fire over SSH. Caveat: tmux
+  -- caches the outer terminal's background at client attach, so a live toggle only
+  -- surfaces after the tmux client re-attaches (detach + `tmux a`); until then this
+  -- re-reads the same cached value — harmless, just a no-op.
+  vim.api.nvim_create_autocmd("FocusGained", {
+    callback = function()
+      requery()
+      vim.defer_fn(apply, 50)
+    end,
+  })
+
   -- Manual re-sync after switching appearance. Keeps the historical
   -- :ReloadNeoTone name so existing keymaps (<leader>rf, <leader>ar, …) work.
   vim.api.nvim_create_user_command("ReloadNeoTone", function()
